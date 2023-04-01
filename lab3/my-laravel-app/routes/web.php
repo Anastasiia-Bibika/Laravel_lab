@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CV;
+use App\Http\Controllers\AbonentController;
+use App\Http\Controllers\CallController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/Bibika/cv',[CV::class,'show']
+);
+Route::resource('abonents',AbonentController::class);
+Route::resource('calls',CallController::class);
