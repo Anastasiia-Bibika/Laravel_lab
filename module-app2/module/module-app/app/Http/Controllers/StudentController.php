@@ -16,7 +16,10 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $this->authorize('viewAny', Student::class);
+
+        $students = Student::all();
+        print_r($students);
     }
 
     /**
@@ -47,15 +50,17 @@ class StudentController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $this->authorize('view', Student::class);
+
+        $student = Student::find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Student $student)
     {
-        //
+        return view('students.edit',['student'=>$student]);
     }
 
     /**
